@@ -26,4 +26,16 @@ router.post("/", function(req, res){
   });
 });
 
+// route for show just one entry by ID
+// "/api/todos/todoId"
+router.get('/:todoId', function(req, res){
+  db.Todo.findById(req.params.todoId)
+  .then(function(foundTodo){
+    res.json(foundTodo);
+  })
+  .catch(function(err){
+    res.send(err);
+  })
+});
+
 module.exports = router;
