@@ -3,9 +3,11 @@ $(document).ready(function(){
   .then(addTodos)
 
   $('#todoInput').keypress(function(event){
+    // The trim() method removes whitespace from both ends of a string.
+    var todoText = $("#todoInput").val().trim();
     // event '13' - when user press enter
-    if(event.which == 13) {
-      createTodo();
+    if(event.which == 13 && todoText) {
+      createTodo(todoText);
     }
   });
 
