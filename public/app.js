@@ -9,7 +9,13 @@ $(document).ready(function(){
     }
   });
 
-  $(".list").on("click", "span", function(){
+  $(".list").on("click", "li", function(){
+    updateTodo($(this));
+  });
+
+  // add event for when we clicked on span for delete, not reacting on li element
+  $(".list").on("click", "span", function(ev){
+    ev.stopPropagation();
     removeTodo($(this).parent());
   });
 });
@@ -54,6 +60,27 @@ function removeTodo(todo){
   })
   .then(function(data){
     todo.remove();
+  })
+  .catch(function(err){
+    console.log(err);
+  })
+}
+
+function updateTodo(todo){
+  // console.log(todo.data("completed"));
+  var updateUrl = "/api/todos/" + todo.data("id");
+  var isDone = !todo.data("completed");
+  var updateData = {completed: isDone};
+  // send a put request
+  $.ajax({
+    method: "PUT",
+    url: updateUrl,
+    data: updateData
+  })
+  .then(function(updateTodo){
+    // Add or remove one class for element
+    todo.toggleClass("done");
+    todo.data("completed", isDone);
   })
   .catch(function(err){
     console.log(err);

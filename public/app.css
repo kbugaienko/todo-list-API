@@ -68,6 +68,10 @@ header h2 {
 	cursor: pointer;
 }
 
+/* ======================================================================== */
+/* STYLES for just done element in the list */
+/* ======================================================================== */
+
 .done {
 	text-decoration: line-through;
 	color: #bdc3c7;
