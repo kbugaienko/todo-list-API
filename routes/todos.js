@@ -39,7 +39,7 @@ router.get('/:todoId', function(req, res){
 });
 
 // route for update one entry by Id
-router.put('/todoId', function(req, res){
+router.put('/:todoId', function(req, res){
   db.Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true})
   .then(function(todo){
     res.json(todo);
@@ -50,7 +50,7 @@ router.put('/todoId', function(req, res){
 });
 
 // route for delete one entry by Id
-router.delete("/todoId", function(req, res){
+router.delete("/:todoId", function(req, res){
     db.Todo.remove({_id: req.params.todoId})
     .then(function(){
       res.json({message: "We deleted it!"});

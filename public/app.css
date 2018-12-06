@@ -68,13 +68,16 @@ header h2 {
 	cursor: pointer;
 }
 
-.task:hover span{
-	opacity: 1;
-}
-
 .done {
 	text-decoration: line-through;
 	color: #bdc3c7;
+}
+
+/* ======================================================================== */
+/* STYLES for element for delete entry by clicking on "X" */
+/* ======================================================================== */
+.task:hover span{
+	opacity: 1;
 }
 
 li span {
@@ -87,3 +90,4 @@ li span {
 li span:hover {
   color: #e74c3c
 }
+/* ======================================================================== */
