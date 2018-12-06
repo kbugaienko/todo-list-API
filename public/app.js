@@ -1,6 +1,14 @@
 $(document).ready(function(){
   $.getJSON('/api/todos')
   .then(addTodos)
+
+  $('#todoInput').keypress(function(event){
+    // event '13' - when user press enter
+    if(event.which == 13) {
+      createTodo();
+    }
+  });
+
 });
 
 function addTodos(todos){
@@ -18,4 +26,18 @@ function addTodo(todo){
     newTodo.addClass("done");
   }
   $('.list').append(newTodo);
+}
+
+function createTodo(){
+  //send request to create new todo
+  var userInput = $('#todoInput').val();
+  $.post('/api/todos',{name: userInput})
+  .then(function(newTodo){
+    console.log(newTodo);
+    $('#todoInput').val('');
+    addTodo(newTodo);
+  })
+  .catch(function(err){
+    console.log(err);
+  })
 }
