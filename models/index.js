@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-mongoose.set('debug', true);
-mongoose.connect('mongodb://localhost/todo_api', { useNewUrlParser: true });
+var mongoose = require('mongoose')
+mongoose.set('debug', true)
+mongoose.connect('mongodb://localhost/todo_api', { useNewUrlParser: true })
 
-mongoose.Promise = Promise;
+mongoose.Promise = Promise
 
-module.exports.Todo = require("./todo");
+module.exports.Todo = require('./todo')

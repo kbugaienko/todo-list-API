@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 var todoSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: "Name cannot be blank!"
+    required: 'Name cannot be blank!'
   },
   completed: {
     type: Boolean,
@@ -13,9 +13,9 @@ var todoSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-});
+})
 
 // save this schema to DB
-var Todo = mongoose.model("Todo", todoSchema);
+var Todo = mongoose.model('Todo', todoSchema)
 
-module.exports = Todo;
+module.exports = Todo
